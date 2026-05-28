@@ -12,7 +12,7 @@
     { "label": "Security Alerts",    "desc": "Login and security notifications",  "enabled": true  }
   ],
   "homeStats": [
-    { "color": "blue",   "icon": "bi-people-fill",              "value": "48,392",  "label": "Total Users",    "delta": "↑ +12.4%", "sub": "vs last month"  },
+    { "color": "blue",   "icon": "bi-people-fill",              "value": "50,000",  "label": "Total Users",    "delta": "↑ +12.4%", "sub": "vs last month"  },
     { "color": "green",  "icon": "bi-currency-dollar",          "value": "$127,840","label": "Monthly Revenue","delta": "↑ +8.1%",  "sub": "vs last month"  },
     { "color": "orange", "icon": "bi-activity",                 "value": "1,247",   "label": "Active Sessions","delta": "↓ -3.2%",  "sub": "right now"       },
     { "color": "red",    "icon": "bi-exclamation-triangle-fill","value": "7",        "label": "Open Alerts",    "delta": "↑ +2",     "sub": "needs attention" }
@@ -65,7 +65,7 @@
     { "name": "Tablet",  "icon": "bi-tablet-fill", "color": "#f59e0b", "pct":  7 }
   ],
   "usersStats": [
-    { "color": "blue",   "icon": "bi-people-fill",       "value": "48,392", "label": "Total Users", "delta": "↑ +342"   },
+    { "color": "blue",   "icon": "bi-people-fill",       "value": "50,000", "label": "Total Users", "delta": "↑ +342"   },
     { "color": "green",  "icon": "bi-person-check-fill", "value": "41,105", "label": "Active",      "delta": "84.9%"    },
     { "color": "orange", "icon": "bi-person-dash-fill",  "value": "1,284",  "label": "Suspended",   "delta": "↓ -12"    },
     { "color": "purple", "icon": "bi-person-plus-fill",  "value": "3,847",  "label": "New (30d)",   "delta": "↑ +18.3%" }
