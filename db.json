@@ -1,0 +1,83 @@
+{
+  "profile": {
+    "name": "Jane Doe",
+    "email": "jane.doe@example.com",
+    "role": "Administrator",
+    "initials": "JD"
+  },
+  "notifications": [
+    { "label": "Email Alerts",       "desc": "Receive alerts via email",         "enabled": true  },
+    { "label": "Push Notifications", "desc": "Browser push notifications",        "enabled": true  },
+    { "label": "Weekly Digest",      "desc": "Summary report every Monday",       "enabled": false },
+    { "label": "Security Alerts",    "desc": "Login and security notifications",  "enabled": true  }
+  ],
+  "homeStats": [
+    { "color": "blue",   "icon": "bi-people-fill",              "value": "48,392",  "label": "Total Users",    "delta": "↑ +12.4%", "sub": "vs last month"  },
+    { "color": "green",  "icon": "bi-currency-dollar",          "value": "$127,840","label": "Monthly Revenue","delta": "↑ +8.1%",  "sub": "vs last month"  },
+    { "color": "orange", "icon": "bi-activity",                 "value": "1,247",   "label": "Active Sessions","delta": "↓ -3.2%",  "sub": "right now"       },
+    { "color": "red",    "icon": "bi-exclamation-triangle-fill","value": "7",        "label": "Open Alerts",    "delta": "↑ +2",     "sub": "needs attention" }
+  ],
+  "weeklyRevenue": [
+    { "day": "Mon", "val": 18400 },
+    { "day": "Tue", "val": 22100 },
+    { "day": "Wed", "val": 19800 },
+    { "day": "Thu", "val": 25600 },
+    { "day": "Fri", "val": 31200 },
+    { "day": "Sat", "val": 14300 },
+    { "day": "Sun", "val": 27800, "today": true }
+  ],
+  "trafficSources": [
+    { "name": "Organic Search", "pct": 42, "color": "#3b82f6" },
+    { "name": "Direct",         "pct": 28, "color": "#10b981" },
+    { "name": "Social Media",   "pct": 18, "color": "#f59e0b" },
+    { "name": "Referral",       "pct":  8, "color": "#8b5cf6" },
+    { "name": "Email",          "pct":  4, "color": "#ef4444" }
+  ],
+  "activities": [
+    { "icon": "bi-person-check-fill",    "color": "#10b981", "title": "New user registered", "detail": "alice@example.com joined the platform",       "time": "2 min ago"  },
+    { "icon": "bi-credit-card-fill",     "color": "#3b82f6", "title": "Payment received",    "detail": "$1,200 from Acme Corp",                        "time": "14 min ago" },
+    { "icon": "bi-exclamation-circle-fill","color":"#ef4444","title": "Alert triggered",     "detail": "CPU usage exceeded 90% on server-03",          "time": "32 min ago" },
+    { "icon": "bi-file-earmark-check-fill","color":"#8b5cf6","title": "Report exported",     "detail": "Monthly summary PDF generated",                "time": "1 hr ago"   },
+    { "icon": "bi-cloud-upload-fill",    "color": "#f59e0b", "title": "Backup completed",    "detail": "Full backup stored to S3",                     "time": "3 hr ago"   }
+  ],
+  "analyticsStats": [
+    { "color": "blue",   "icon": "bi-eye-fill",         "value": "1.28M",  "label": "Page Views",   "delta": "↑ +18.3%", "sub": "vs previous period" },
+    { "color": "green",  "icon": "bi-arrow-left-right", "value": "34.2%",  "label": "Bounce Rate",  "delta": "↓ -5.1%",  "sub": "improvement"        },
+    { "color": "purple", "icon": "bi-clock-fill",       "value": "4m 22s", "label": "Avg. Session", "delta": "↑ +0:47",  "sub": "duration"            },
+    { "color": "orange", "icon": "bi-graph-up-arrow",   "value": "3,847",  "label": "Conversions",  "delta": "↑ +22.7%", "sub": "this period"         }
+  ],
+  "monthlyViews": [
+    { "month": "Jan", "val": 82  }, { "month": "Feb", "val": 91  }, { "month": "Mar", "val": 105 },
+    { "month": "Apr", "val": 98  }, { "month": "May", "val": 114 }, { "month": "Jun", "val": 127 },
+    { "month": "Jul", "val": 143 }, { "month": "Aug", "val": 138 }, { "month": "Sep", "val": 152 },
+    { "month": "Oct", "val": 169 }, { "month": "Nov", "val": 158 }, { "month": "Dec", "val": 184 }
+  ],
+  "topPages": [
+    { "path": "home",    "views": "184,930", "bounce": "28%" },
+    { "path": "pricing", "views":  "62,410", "bounce": "41%" },
+    { "path": "docs",    "views":  "58,200", "bounce": "19%" },
+    { "path": "blog",    "views":  "44,870", "bounce": "35%" },
+    { "path": "signup",  "views":  "31,200", "bounce": "52%" }
+  ],
+  "devices": [
+    { "name": "Mobile",  "icon": "bi-phone-fill",  "color": "#3b82f6", "pct": 58 },
+    { "name": "Desktop", "icon": "bi-laptop-fill", "color": "#10b981", "pct": 35 },
+    { "name": "Tablet",  "icon": "bi-tablet-fill", "color": "#f59e0b", "pct":  7 }
+  ],
+  "usersStats": [
+    { "color": "blue",   "icon": "bi-people-fill",       "value": "48,392", "label": "Total Users", "delta": "↑ +342"   },
+    { "color": "green",  "icon": "bi-person-check-fill", "value": "41,105", "label": "Active",      "delta": "84.9%"    },
+    { "color": "orange", "icon": "bi-person-dash-fill",  "value": "1,284",  "label": "Suspended",   "delta": "↓ -12"    },
+    { "color": "purple", "icon": "bi-person-plus-fill",  "value": "3,847",  "label": "New (30d)",   "delta": "↑ +18.3%" }
+  ],
+  "users": [
+    { "id": 1, "name": "Alice Johnson", "email": "alice@example.com", "role": "Admin",  "status": "Active",    "joined": "Jan 12, 2023", "lastActive": "Just now",    "initials": "AJ", "color": "#3b82f6" },
+    { "id": 2, "name": "Bob Smith",     "email": "bob@example.com",   "role": "Editor", "status": "Active",    "joined": "Mar 4, 2023",  "lastActive": "5 min ago",   "initials": "BS", "color": "#10b981" },
+    { "id": 3, "name": "Carol White",   "email": "carol@example.com", "role": "Viewer", "status": "Inactive",  "joined": "Jun 19, 2023", "lastActive": "3 days ago",  "initials": "CW", "color": "#f59e0b" },
+    { "id": 4, "name": "David Lee",     "email": "david@example.com", "role": "Editor", "status": "Active",    "joined": "Aug 7, 2023",  "lastActive": "1 hr ago",    "initials": "DL", "color": "#8b5cf6" },
+    { "id": 5, "name": "Eva Martinez",  "email": "eva@example.com",   "role": "Admin",  "status": "Active",    "joined": "Sep 1, 2023",  "lastActive": "30 min ago",  "initials": "EM", "color": "#ef4444" },
+    { "id": 6, "name": "Frank Brown",   "email": "frank@example.com", "role": "Viewer", "status": "Suspended", "joined": "Oct 15, 2023", "lastActive": "2 weeks ago", "initials": "FB", "color": "#64748b" },
+    { "id": 7, "name": "Grace Kim",     "email": "grace@example.com", "role": "Editor", "status": "Active",    "joined": "Nov 3, 2023",  "lastActive": "2 hr ago",    "initials": "GK", "color": "#14b8a6" },
+    { "id": 8, "name": "Henry Wilson",  "email": "henry@example.com", "role": "Viewer", "status": "Active",    "joined": "Dec 20, 2023", "lastActive": "Yesterday",   "initials": "HW", "color": "#f97316" }
+  ]
+}
