@@ -199,6 +199,139 @@ function saveSettings() {
   setTimeout(() => alert.style.display = 'none', 3000);
 }
 
+// ===== Lumen AI Chat =====
+const LUMEN_KEY_STORE = 'lumen_api_key';
+let lumenHistory = [];
+let lumenOpen = false;
+
+function toggleLumenChat() {
+  lumenOpen = !lumenOpen;
+  const panel = document.getElementById('lumen-panel');
+  panel.classList.toggle('open', lumenOpen);
+  if (lumenOpen) {
+    const key = localStorage.getItem(LUMEN_KEY_STORE);
+    if (key) {
+      showLumenChat();
+    } else {
+      showLumenSetup();
+    }
+  }
+}
+
+function showLumenSetup() {
+  document.getElementById('lumen-setup').style.display = '';
+  document.getElementById('lumen-chat').style.display = 'none';
+  setTimeout(() => document.getElementById('lumen-key-input').focus(), 50);
+}
+
+function showLumenChat() {
+  document.getElementById('lumen-setup').style.display = 'none';
+  document.getElementById('lumen-chat').style.display = 'flex';
+  setTimeout(() => document.getElementById('lumen-input').focus(), 50);
+}
+
+function lumenShowKeyPrompt() {
+  showLumenSetup();
+  document.getElementById('lumen-key-input').value = localStorage.getItem(LUMEN_KEY_STORE) || '';
+}
+
+function lumenSaveKey() {
+  const key = document.getElementById('lumen-key-input').value.trim();
+  if (!key) return;
+  localStorage.setItem(LUMEN_KEY_STORE, key);
+  lumenHistory = [];
+  showLumenChat();
+  document.getElementById('lumen-messages').innerHTML = `
+    <div class="lumen-msg assistant">
+      <div class="lumen-bubble">Hi! I'm Lumen AI. Ask me anything about your dashboard.</div>
+    </div>`;
+}
+
+function lumenAppendMsg(role, text) {
+  const feed = document.getElementById('lumen-messages');
+  const div = document.createElement('div');
+  div.className = `lumen-msg ${role}`;
+  div.innerHTML = `<div class="lumen-bubble">${text.replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>')}</div>`;
+  feed.appendChild(div);
+  feed.scrollTop = feed.scrollHeight;
+  return div;
+}
+
+function lumenShowTyping() {
+  const feed = document.getElementById('lumen-messages');
+  const div = document.createElement('div');
+  div.className = 'lumen-msg assistant';
+  div.id = 'lumen-typing';
+  div.innerHTML = `<div class="lumen-bubble"><div class="lumen-typing"><span></span><span></span><span></span></div></div>`;
+  feed.appendChild(div);
+  feed.scrollTop = feed.scrollHeight;
+}
+
+function lumenRemoveTyping() {
+  const el = document.getElementById('lumen-typing');
+  if (el) el.remove();
+}
+
+async function lumenSend() {
+  const input = document.getElementById('lumen-input');
+  const text = input.value.trim();
+  if (!text) return;
+
+  const key = localStorage.getItem(LUMEN_KEY_STORE);
+  if (!key) { showLumenSetup(); return; }
+
+  input.value = '';
+  input.disabled = true;
+  const sendBtn = document.getElementById('lumen-send-btn');
+  sendBtn.disabled = true;
+
+  lumenAppendMsg('user', text);
+  lumenHistory.push({ role: 'user', content: text });
+  lumenShowTyping();
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'x-api-key': key,
+        'anthropic-version': '2023-06-01',
+        'content-type': 'application/json',
+        'anthropic-dangerous-allow-browser': 'true',
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 1024,
+        system: 'You are Lumen AI, a helpful assistant embedded in the HiDash dashboard. Help users understand their analytics data, user metrics, revenue trends, and settings. Be concise and friendly.',
+        messages: lumenHistory,
+      }),
+    });
+
+    lumenRemoveTyping();
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      const msg = err.error?.message || `API error ${res.status}`;
+      lumenAppendMsg('assistant', `Error: ${msg}`);
+      if (res.status === 401) {
+        localStorage.removeItem(LUMEN_KEY_STORE);
+        setTimeout(showLumenSetup, 1200);
+      }
+    } else {
+      const data = await res.json();
+      const reply = data.content?.[0]?.text || '(no response)';
+      lumenHistory.push({ role: 'assistant', content: reply });
+      lumenAppendMsg('assistant', reply);
+    }
+  } catch (e) {
+    lumenRemoveTyping();
+    lumenAppendMsg('assistant', 'Network error. Please check your connection and try again.');
+  } finally {
+    input.disabled = false;
+    sendBtn.disabled = false;
+    input.focus();
+  }
+}
+
 // ===== Date =====
 document.getElementById('page-date').textContent = new Date().toLocaleDateString('en-US', {
   weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'

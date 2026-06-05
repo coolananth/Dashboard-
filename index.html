@@ -402,6 +402,52 @@
   <span class="toast-msg"></span>
 </div>
 
+<!-- ===== Ask Lumen AI ===== -->
+<button class="lumen-fab" id="lumen-fab" onclick="toggleLumenChat()" title="Ask Lumen AI">
+  <i class="bi bi-stars" id="lumen-fab-icon"></i>
+</button>
+
+<div class="lumen-panel" id="lumen-panel">
+  <div class="lumen-header">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div class="lumen-avatar"><i class="bi bi-stars"></i></div>
+      <div>
+        <div style="font-weight:700;font-size:14px;">Lumen AI</div>
+        <div style="font-size:11px;opacity:.7;">Powered by Claude</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:6px;">
+      <button class="lumen-hdr-btn" onclick="lumenShowKeyPrompt()" title="Configure API key"><i class="bi bi-key"></i></button>
+      <button class="lumen-hdr-btn" onclick="toggleLumenChat()" title="Close"><i class="bi bi-x-lg"></i></button>
+    </div>
+  </div>
+
+  <!-- API key setup screen -->
+  <div class="lumen-setup" id="lumen-setup">
+    <div class="lumen-setup-icon"><i class="bi bi-key-fill"></i></div>
+    <p style="font-size:14px;font-weight:600;margin-bottom:4px;">Connect your API key</p>
+    <p style="font-size:12px;color:#64748b;margin-bottom:16px;">Enter your Anthropic API key to start chatting with Lumen AI.</p>
+    <input class="form-control" id="lumen-key-input" type="password" placeholder="sk-ant-…" style="margin-bottom:10px;" />
+    <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="lumenSaveKey()">Save &amp; Start Chatting</button>
+  </div>
+
+  <!-- Chat screen -->
+  <div class="lumen-chat" id="lumen-chat" style="display:none;">
+    <div class="lumen-messages" id="lumen-messages">
+      <div class="lumen-msg assistant">
+        <div class="lumen-bubble">Hi! I'm Lumen AI. Ask me anything about your dashboard.</div>
+      </div>
+    </div>
+    <div class="lumen-input-row">
+      <input class="lumen-input" id="lumen-input" type="text" placeholder="Ask anything…"
+             onkeydown="if(event.key==='Enter')lumenSend()" />
+      <button class="lumen-send-btn" id="lumen-send-btn" onclick="lumenSend()">
+        <i class="bi bi-send-fill"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
 <script src="js/app.js"></script>
 </body>
 </html>

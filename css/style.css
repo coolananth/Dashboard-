@@ -444,3 +444,177 @@ tbody tr:hover td { background: #f8fafc; }
   .content { padding: 16px; }
   .page-greeting { font-size: 20px; }
 }
+
+/* ===== Lumen AI Chat ===== */
+.lumen-fab {
+  position: fixed;
+  bottom: 90px;
+  right: 28px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #3b82f6);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(99,102,241,.45);
+  z-index: 998;
+  transition: transform .2s, box-shadow .2s;
+}
+.lumen-fab:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(99,102,241,.55); }
+
+.lumen-panel {
+  position: fixed;
+  bottom: 154px;
+  right: 28px;
+  width: 360px;
+  max-height: 520px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.18);
+  display: flex;
+  flex-direction: column;
+  z-index: 997;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(16px) scale(.97);
+  pointer-events: none;
+  transition: opacity .22s, transform .22s;
+}
+.lumen-panel.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.lumen-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #6366f1, #3b82f6);
+  color: #fff;
+  flex-shrink: 0;
+}
+.lumen-avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.22);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+.lumen-hdr-btn {
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  background: rgba(255,255,255,.15);
+  border: none; color: #fff;
+  cursor: pointer; font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s;
+}
+.lumen-hdr-btn:hover { background: rgba(255,255,255,.28); }
+
+.lumen-setup {
+  padding: 28px 20px;
+  text-align: center;
+  flex: 1;
+}
+.lumen-setup-icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ede9fe, #dbeafe);
+  margin: 0 auto 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; color: #6366f1;
+}
+
+.lumen-chat {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+.lumen-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px 14px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lumen-msg {
+  display: flex;
+}
+.lumen-msg.assistant { justify-content: flex-start; }
+.lumen-msg.user      { justify-content: flex-end; }
+.lumen-bubble {
+  max-width: 82%;
+  padding: 9px 13px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.lumen-msg.assistant .lumen-bubble {
+  background: #f1f5f9;
+  color: #1e293b;
+  border-bottom-left-radius: 4px;
+}
+.lumen-msg.user .lumen-bubble {
+  background: linear-gradient(135deg, #6366f1, #3b82f6);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+.lumen-typing {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 4px 2px;
+}
+.lumen-typing span {
+  width: 6px; height: 6px;
+  background: #94a3b8;
+  border-radius: 50%;
+  animation: lumenBounce 1s infinite;
+}
+.lumen-typing span:nth-child(2) { animation-delay: .15s; }
+.lumen-typing span:nth-child(3) { animation-delay: .3s; }
+@keyframes lumenBounce {
+  0%,60%,100% { transform: translateY(0); }
+  30% { transform: translateY(-5px); }
+}
+
+.lumen-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-top: 1px solid #f1f5f9;
+  flex-shrink: 0;
+}
+.lumen-input {
+  flex: 1;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color .15s;
+}
+.lumen-input:focus { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,.1); }
+.lumen-send-btn {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #6366f1, #3b82f6);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: opacity .15s;
+}
+.lumen-send-btn:disabled { opacity: .5; cursor: not-allowed; }
