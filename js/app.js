@@ -243,7 +243,7 @@ function lumenSaveKey() {
   showLumenChat();
   document.getElementById('lumen-messages').innerHTML = `
     <div class="lumen-msg assistant">
-      <div class="lumen-bubble">Hi! I'm Lumen AI. Ask me anything about your dashboard.</div>
+      <div class="lumen-bubble">Hi! I'm Lumen by Ananth. Ask me anything about your dashboard.</div>
     </div>`;
 }
 
@@ -301,7 +301,7 @@ async function lumenSend() {
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
         max_tokens: 1024,
-        system: 'You are Lumen AI, a helpful assistant embedded in the HiDash dashboard. Help users understand their analytics data, user metrics, revenue trends, and settings. Be concise and friendly.',
+        system: 'You are Lumen by Ananth, a helpful assistant embedded in the HiDash dashboard. Help users understand their analytics data, user metrics, revenue trends, and settings. Be concise and friendly.',
         messages: lumenHistory,
       }),
     });
